@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+/* "Naija kitchen" palette: every colour comes from something on the stove or in the market. */
+@theme {
+  --color-pepper: #d9381e;
+  --color-pepper-deep: #a92510;
+  --color-palmoil: #f28c1b;
+  --color-plantain: #ffc933;
+  --color-ugu: #2e8b57;
+  --color-adire: #2b2a6f;
+  --color-cream: #fff6e5;
+  --color-cream-deep: #f7e6c4;
+  --color-char: #231a14;
+
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-chunk: 0 5px 0 0 var(--color-char);
+  --shadow-chunk-sm: 0 3px 0 0 var(--color-char);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-char);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ankara-inspired repeating motif, built from gradients so there is no asset to load. */
+.ankara {
+  background-color: var(--color-pepper);
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--color-plantain) 0 7px, transparent 8px),
+    radial-gradient(circle at 50% 50%, transparent 0 13px, var(--color-cream) 14px 16px, transparent 17px),
+    conic-gradient(from 45deg at 50% 50%, var(--color-adire) 0 25%, transparent 0 50%, var(--color-adire) 0 75%, transparent 0);
+  background-size: 44px 44px, 44px 44px, 22px 22px;
+}
+
+.ankara-soft {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(circle at 50% 50%, var(--color-cream-deep) 0 3px, transparent 4px);
+  background-size: 22px 22px;
+}
+
+/* Chunky "pressable" surfaces: a hard shadow that collapses on press. */
+.chunk {
+  border: 3px solid var(--color-char);
+  box-shadow: var(--shadow-chunk);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.chunk:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 var(--color-char);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

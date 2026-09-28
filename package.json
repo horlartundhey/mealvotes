@@ -1,0 +1,18 @@
+{
+  "name": "mealvote",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c yellow,cyan \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "test": "npm test -w server",
+    "seed:meals": "npm run seed:meals -w server",
+    "seed:images": "npm run seed:images -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
