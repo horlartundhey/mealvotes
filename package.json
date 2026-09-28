@@ -1,18 +1,19 @@
 {
   "name": "mealvote",
   "private": true,
-  "workspaces": [
-    "client",
-    "server"
-  ],
+  "description": "Convenience scripts only. client/ and server/ are independent packages, each deployed as its own Vercel project.",
   "scripts": {
-    "dev": "concurrently -n server,client -c yellow,cyan \"npm run dev -w server\" \"npm run dev -w client\"",
-    "build": "npm run build -w client",
-    "test": "npm test -w server",
-    "seed:meals": "npm run seed:meals -w server",
-    "seed:images": "npm run seed:images -w server"
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently -n server,client -c yellow,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "test": "npm test --prefix server",
+    "seed:meals": "npm run seed:meals --prefix server",
+    "seed:images": "npm run seed:images --prefix server"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

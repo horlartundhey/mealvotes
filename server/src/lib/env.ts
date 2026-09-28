@@ -1,9 +1,8 @@
-import 'dotenv/config';
 import path from 'node:path';
 import dotenv from 'dotenv';
 
-// Also load the repo-root .env when running from /server
-dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
+// server/.env (this file is server/src/lib/env.ts). On Vercel there is no file: variables come from the project settings.
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 export const env = {
   mongoUri: process.env.MONGODB_URI ?? '',
